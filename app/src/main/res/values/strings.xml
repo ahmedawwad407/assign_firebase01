@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Assign_firebase01</string>
 
-    <string-array name="sss">
+    <string-array name="names">
         <item>Ahmed</item>
         <item>Ahmed</item>
         <item>Ahmed</item>

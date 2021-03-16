@@ -17,10 +17,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     EditText editTextAddress;
     ListView myList;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    ArrayList<String> list=new ArrayList<>();
+    ArrayList<String> list = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,12 +38,9 @@ public class MainActivity extends AppCompatActivity {
         editTextNumber = findViewById(R.id.number);
         editTextAddress = findViewById(R.id.address);
         myList = findViewById(R.id.ListView);
-
     }
 
-
     public void saveToFirbase(View v) {
-
         String name = editTextName.getText().toString();
         String number = editTextNumber.getText().toString();
         String address = editTextAddress.getText().toString();
@@ -71,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getDataFromFirestore(View v) {
-
         db.collection("contacts")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -80,19 +75,16 @@ public class MainActivity extends AppCompatActivity {
                         if (documentSnapshots.isEmpty()) {
                             Toast.makeText(getApplicationContext(), "isEmpty", Toast.LENGTH_LONG).show();
                             return;
-
                         } else {
-                                for (int x = 0; x <= documentSnapshots.size() - 1; x++) {
-                                    String details = documentSnapshots.getDocuments().get(x).getData().toString();
-                                    String id = documentSnapshots.getDocuments().get(x).getId();
+                            for (int x = 0; x <= documentSnapshots.size() - 1; x++) {
+                                String details = documentSnapshots.getDocuments().get(x).getData().toString();
+                                String id = documentSnapshots.getDocuments().get(x).getId();
+                                list.add(id + " => " + details);
+                                //System.out.println(list);
+                                Log.d("a", "ContactId: " + id + " => " + "contactDetails: " + details + "\n");
+                            }
 
-                                    list.add(id +" => "+details);
-                                    System.out.println(list);
-                                    Log.d("a", "ContactId: " + id + " => " + "contactDetails: " + details + "\n");
-                                }
-//
-                          ArrayAdapter  arrayAdapter =new ArrayAdapter(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item, list);
-
+                            ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, list);
                             myList.setAdapter(arrayAdapter);
                         }
                     }
@@ -101,9 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-
                     }
                 });
     }
-
 }
