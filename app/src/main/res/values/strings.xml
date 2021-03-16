@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Assign_firebase01</string>
+
+    <string-array name="sss">
+        <item>Ahmed</item>
+        <item>Ahmed</item>
+        <item>Ahmed</item>
+        <item>Ahmed</item>
+        <item>moh</item>
+        <item>moh</item>
+        <item>moh</item>
+        <item>moh</item>
+        <item>moh</item>
+        <item>Ali</item>
+        <item>Ali</item>
+        <item>Ali</item>
+        <item>Ali</item>
+        <item>Ali</item>
+        <item>Ali</item>
+        <item>Ali</item>
+        <item>Ali</item>
+        <item>Ali</item>
+        <item>Ali</item>
+        <item>Ali</item>
+        <item>Ali</item>
+        <item>Ali</item>
+
+
+    </string-array>
+</resources>
